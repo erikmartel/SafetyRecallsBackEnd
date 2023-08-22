@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const db = mongoose.connect('mongodb://127.0.0.1:27017/safetyRecalls');
 const recallsRouter = express.Router();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const Recalls = require('./models/safetyRecalls');
 
 
