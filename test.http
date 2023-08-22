@@ -2,9 +2,9 @@ http://localhost:3000
 
 
 ###
-http://localhost:3000/api/safetyRecalls
+http://localhost:3000/api/recalls
 
 
 ###
-http://localhost:3000/api/customers?first_name=Jacob
+http://localhost:3000/api/safetyRecalls?first_name=Jacob
 ###
