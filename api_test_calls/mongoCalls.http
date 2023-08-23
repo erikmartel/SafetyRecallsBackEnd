@@ -2,9 +2,9 @@ http://localhost:4000
 
 
 ###
-http://localhost:4000/api/recalls
+http://localhost:4000/api/drivers
 
 
 ###
-http://localhost:4000/api/recalls?first_name=Erik
+http://localhost:4000/api/drivers?first_name=Erik
 ###
