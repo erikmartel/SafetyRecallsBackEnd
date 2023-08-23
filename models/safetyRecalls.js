@@ -9,4 +9,4 @@ const safetyRecalls = new Schema(
   }
 );
 
-module.exports = mongoose.model('Recalls', safetyRecalls);
+module.exports = mongoose.model('drivers', safetyRecalls);
