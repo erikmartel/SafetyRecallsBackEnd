@@ -6,6 +6,7 @@ const db = mongoose.connect('mongodb://127.0.0.1:27017/safetyRecalls');
 const recallsRouter = express.Router();
 const port = process.env.PORT || 4000;
 const Recalls = require('./models/safetyRecalls');
+const cors = require('cors');
 
 //test
 recallsRouter.route('/drivers')
@@ -21,6 +22,8 @@ recallsRouter.route('/drivers')
       return res.json(drivers);
     });
   });
+
+app.use(cors());
 
 app.use('/api', recallsRouter);
 
