@@ -22,4 +22,24 @@ router.get('/', (req, res) => {
     });
   });
 
+  router.post('/newDriver', async(req, res) => {
+/*     const FirstName = "t"
+    const LastName = "v" */
+    console.log(req.body)
+    const FirstName = req.body.first_name
+
+    const LastName = req.body.last_name
+
+    const formData = new Driver({
+      first_name: FirstName,
+      last_name: LastName
+    })
+    try {
+      formData.save();
+      res.send("inserted data..")
+  } catch(err) {
+      console.log(err)
+  }
+  });
+
 module.exports = router;
