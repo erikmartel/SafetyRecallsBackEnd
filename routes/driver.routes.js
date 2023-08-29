@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Driver = require('../models/driver.model')
 
-//pull all drivers
+//get all drivers
 router.get('/', (req, res) => {
   Driver.find((err, drivers) => {
       if (err) {
@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     });
   });
 
+//get specific driver by id
  router.get('/:id',(req, res) => {
     const query = {};
     Driver.findById(req.params.id, (err, drivers) => {
@@ -22,12 +23,10 @@ router.get('/', (req, res) => {
     });
   });
 
+//add a new driver
   router.post('/newDriver', async(req, res) => {
-/*     const FirstName = "t"
-    const LastName = "v" */
     console.log(req.body)
     const FirstName = req.body.first_name
-
     const LastName = req.body.last_name
 
     const formData = new Driver({
@@ -41,5 +40,29 @@ router.get('/', (req, res) => {
       console.log(err)
   }
   });
+
+
+//add vehicle to driver by a specific driver by id
+router.route('/updateVehicle').patch(function(req,res){
+  const driverId = req.body.id
+  const makeName = req.body.make
+  const modelName = req.body.model
+  const modelYear = req.body.modelyear
+  Driver.findByIdAndUpdate(driverId, {Vehicles:[{model:modelName, modelYear: modelYear, make: makeName}]},
+  function(err, result){
+
+    if(err){
+        res.send(err)
+    }
+    else{
+        res.send(result)
+        console.log("updated vehicles...")
+  }
+
+})
+});
+
+
+
 
 module.exports = router;
