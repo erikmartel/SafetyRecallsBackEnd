@@ -70,6 +70,29 @@ router.route('/updateVehicle').patch(function(req,res){
 })
 });
 
+//Delete specific driver by id
+router.delete('/:id',(req, res) => {
+  const query = {};
+  Driver.findByIdAndDelete(req.params.id, (err, drivers) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(drivers);
+    console.log("Driver Deleted")
+  });
+});
+
+// Delete a vehicle by id
+router.delete('/:userid/vehicles/:vehicleid',(req,res) => {
+  console.log('route called')
+  Driver.findByIdAndUpdate(req.params.userid, {$pull : {Vehicles:{_id: req.params.vehicleid}}} ,(err, drivers)=>{
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(drivers);  
+  })
+})
+
 
 
 
