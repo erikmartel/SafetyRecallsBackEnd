@@ -28,10 +28,18 @@ router.get('/', (req, res) => {
     console.log(req.body)
     const FirstName = req.body.first_name
     const LastName = req.body.last_name
+    const makeName = req.body.make
+    const modelName = req.body.model
+    const modelYear = req.body.modelyear
 
     const formData = new Driver({
       first_name: FirstName,
-      last_name: LastName
+      last_name: LastName,
+      Vehicles: [{
+        modelYear: modelYear,
+        make: makeName,
+        model:modelName
+    }]
     })
     try {
       formData.save();
