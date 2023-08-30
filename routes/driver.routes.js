@@ -50,13 +50,13 @@ router.get('/', (req, res) => {
   });
 
 
-//add vehicle to driver by a specific driver by id
-router.route('/updateVehicle').patch(function(req,res){
+//add vehicle to a driver by a specific driver by id
+router.route('/').patch(function(req,res){
   const driverId = req.body.id
   const makeName = req.body.make
   const modelName = req.body.model
   const modelYear = req.body.modelyear
-  Driver.findByIdAndUpdate(driverId, {Vehicles:[{model:modelName, modelYear: modelYear, make: makeName}]},
+  Driver.findByIdAndUpdate(driverId, {$push:{Vehicles:[{model:modelName, modelYear: modelYear, make: makeName}]}},
   function(err, result){
 
     if(err){
